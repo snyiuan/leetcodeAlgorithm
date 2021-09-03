@@ -1,7 +1,5 @@
 package leetCode;
 
-import demo.ListNode;
-
 import java.util.HashMap;
 import java.util.Map;
 

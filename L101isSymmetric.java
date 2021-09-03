@@ -1,10 +1,7 @@
 package leetCode;
 
-import demo.TreeNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 /**
  * @author zzq
