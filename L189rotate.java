@@ -6,6 +6,7 @@ public class L189rotate {
     }
 
     public void rotate(int[] nums, int k) {
+        
 
     }
 }
