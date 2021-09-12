@@ -112,7 +112,6 @@ public class L567checkInclusion {
                     } else {
                         continue A;
                     }
-
                 }
                 if (copy.isEmpty()) {
                     return true;
