@@ -15,39 +15,38 @@ public class L15threeSum {
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
+        int n = nums.length;
         Arrays.sort(nums);
-        if (nums.length < 3) {
-            return null;
-        }
-        List<List<Integer>> result = new ArrayList();
-        Map ex = new HashMap();
-        for (int i = 0; i < nums.length - 3; i++) {
-            int target = nums[i];
-            twoSum(Arrays.copyOfRange(nums, i + 1, nums.length), target, result, ex);
-        }
-        return result;
-    }
-
-    public static void twoSum(int[] nums, int target, List res, Map ex) {
-
-        Map<Integer, Integer> map = new HashMap();
-        List<Integer> list;
-        for (int i = 0; i < nums.length; i++) {
-            list = new ArrayList();
-            list.add(target);
-            if (map.containsKey(nums[i])) {
-                if (!ex.containsKey(nums[i]) && !ex.containsValue(nums[i])) {
-                    int value = map.get(nums[i]);
-                    list.add(value);
-                    list.add(nums[i]);
-                    ex.put(nums[i], value);
-                    res.add(list);
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        // 枚举 a
+        for (int first = 0; first < n; ++first) {
+            if (first > 0 && nums[first] == nums[first - 1]) {
+                continue;
+            }
+            int third = n - 1;
+            int target = -nums[first];
+            for (int second = first + 1; second < n; ++second) {
+                if (second > first + 1 && nums[second] == nums[second - 1]) {
+                    continue;
                 }
-            } else {
-                map.put(-target - nums[i], nums[i]);
+                while (second < third && nums[second] + nums[third] > target) {
+                    --third;
+                }
+                if (second == third) {
+                    break;
+                }
+                if (nums[second] + nums[third] == target) {
+                    List<Integer> list = new ArrayList<Integer>();
+                    list.add(nums[second]);
+                    list.add(nums[third]);
+                    list.add(nums[first]);
+                    ans.add(list);
+                }
             }
         }
+        return ans;
     }
 
+    
 
 }
