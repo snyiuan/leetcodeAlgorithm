@@ -40,6 +40,7 @@ public class L91numDecodings {
             int a = cs[i] - '0', b = (cs[i - 1] - '0') * 10 + (cs[i] - '0');
             if (1 <= a && a <= 9) f[i % 3] = f[(i - 1) % 3];
             if (10 <= b && b <= 26) f[i % 3] += f[(i - 2) % 3];
+            
         }
         return f[n % 3];
     }

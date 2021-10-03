@@ -32,4 +32,3 @@ public class L45jump {
         return steps;
     }
 }
-d
