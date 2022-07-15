@@ -1,4 +1,4 @@
-    package leetCode;
+package leetCode;
 
 /**
  * @author zzq
@@ -11,12 +11,24 @@ public class L844backspaceCompare {
         String str3 = "ab##";
         String str4 = "xywrrmp";
         String str5 = "xywrrmu#p";
-        L844backspaceCompare self = new L844backspaceCompare();
-//        System.out.println(self.backspaceCompare(str, str2));
-        System.out.println(self.backspaceCompare(str4, str5));
+        // System.out.println(self.backspaceCompare(str, str2));
+        // System.out.println(self.backspaceCompare(str4, str5));
+        System.out.println("aaa");
     }
 
     public boolean backspaceCompare(String s, String t) {
+        return false;
+    }
+
+    public static String helper(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            
+        }
+        return "";
+
+    }
+
+    public boolean backspaceCompare4(String s, String t) {
         int sl = s.length() - 1;
         int tl = t.length() - 1;
         int scount = 0;
@@ -43,7 +55,8 @@ public class L844backspaceCompare {
                 tl--;
             }
             if (sl >= 0 && tl >= 0) {
-                if (s.charAt(sl) != t.charAt(tl)) return false;
+                if (s.charAt(sl) != t.charAt(tl))
+                    return false;
             } else if (sl >= 0 || tl >= 0) {
                 return false;
             }
