@@ -42,6 +42,32 @@ public class L733floodFill {
         }
     }
 
+
+    public static int[][] floodFill3(int[][] image, int sr, int sc, int newColor) {
+        int[][] seen = new int[image.length][image[0].length];
+        int origin = image[sr][sc];
+        if (origin != newColor) {
+            subFloodFill3(image, seen, sr, sc, origin, newColor);
+        }
+        return image;
+    }
+
+    public static void subFloodFill3(int[][] image, int[][] seen, int sr, int sc, int origin, int newColor) {
+        if (sr < 0 || sc < 0 || sr >= image.length || sc >= image[0].length) {
+            return;
+        }
+        if (image[sr][sc] == origin && seen[sr][sc] != 0) {
+            seen[sr][sc] = 1;
+            image[sr][sc] = newColor;
+            subFloodFill3(image, seen, sr - 1, sc, origin, newColor);
+            subFloodFill3(image, seen, sr + 1, sc, origin, newColor);
+            subFloodFill3(image, seen, sr, sc - 1, origin, newColor);
+            subFloodFill3(image, seen, sr, sc + 1, origin, newColor);
+        }
+    }
+
+
+
     public static int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int origin = image[sr][sc];
         int[][] change = new int[image.length][image[0].length];
