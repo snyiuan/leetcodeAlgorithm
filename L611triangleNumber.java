@@ -10,20 +10,46 @@ public class L611triangleNumber {
         System.out.println(triangleNumber(arr));
     }
 
+    /*
+     * 
+     * Arrays.sort(nums);
+     * int count = 0;
+     * if (nums.length < 3) {
+     * return count;
+     * }
+     * for (int i = 0; i < nums.length - 2; i++) {
+     * for (int j = i + 1; j < nums.length - 1; j++) {
+     * int sum = nums[i] + nums[j];
+     * int l = j + 1;
+     * int r = nums.length - 1;
+     * int m = 0;
+     * while (l <= r) {
+     * m = l + (r - l) / 2;
+     * if (nums[m] >= sum) {
+     * r = m - 1;
+     * } else {
+     * l = m + 1;
+     * }
+     * }
+     * count += r - j;
+     * }
+     * }
+     * return count;
+     */
     public static int triangleNumber(int[] nums) {
+        if (nums.length < 3) {
+            return 0;
+        }
         Arrays.sort(nums);
         int count = 0;
-        if (nums.length < 3) {
-            return count;
-        }
-        for (int i = 0; i < nums.length - 2; i++) {
-            for (int j = i + 1; j < nums.length - 1; j++) {
-                int sum = nums[i] + nums[j];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
                 int l = j + 1;
                 int r = nums.length - 1;
+
                 while (l <= r) {
                     int m = l + (r - l) / 2;
-                    if (nums[m] >= sum) {
+                    if (nums[m] >= nums[i] + nums[j]) {
                         r = m - 1;
                     } else {
                         l = m + 1;

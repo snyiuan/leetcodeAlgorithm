@@ -9,13 +9,29 @@ import java.util.ArrayList;
 public class L300lengthOfLIS {
     public static void main(String[] args) {
         L300lengthOfLIS self = new L300lengthOfLIS();
-        int[] nums = {0, 1, 0, 3, 2, 3};
-        int[] nums2 = {10, 9, 2, 5, 3, 7, 101, 18};
+        int[] nums = { 0, 1, 0, 3, 2, 3 };
+        int[] nums2 = { 10, 9, 2, 5, 3, 7, 101, 18 };
         System.out.println(self.lengthOfLIS(nums));
         System.out.println(self.lengthOfLIS(nums2));
     }
 
     public int lengthOfLIS(int[] nums) {
+        int max = 1;
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+            max = Math.max(max,dp[i]);
+        }
+
+        return max;
+    }
+
+    public int lengthOfLIS3(int[] nums) {
         int[] dp = new int[nums.length];
         int max = 1;
         dp[0] = 1;
