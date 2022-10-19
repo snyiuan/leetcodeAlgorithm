@@ -20,6 +20,7 @@ public class L278firstBadVersion {
         while (l < r) {
             int m = (int) Math.floor(((long) l + (long) r) / 2);
             if (isBadVersion(m)) {
+                
                 r = m;
             } else {
                 l = m + 1;
