@@ -11,21 +11,44 @@ public class L844backspaceCompare {
         String str3 = "ab##";
         String str4 = "xywrrmp";
         String str5 = "xywrrmu#p";
+
+        String str6 = "gtc#uz#";
+        String str7 = "gtcm##uz#";
+
+        String str8 = "xywrrmp";
+        String str9 = "xywrrmu#p";
+        String str10 = "bxj##tw";
+        String str11 = "bxo#j##tw";
+
+        System.out.println(helper(str11));
+        System.out.println(helper("ab#c"));
+        
+        // System.out.println(backspaceCompare(str10, str11));
         // System.out.println(self.backspaceCompare(str, str2));
         // System.out.println(self.backspaceCompare(str4, str5));
-        System.out.println("aaa");
     }
 
-    public boolean backspaceCompare(String s, String t) {
-        return false;
+    public static boolean backspaceCompare(String s, String t) {
+        return helper(s).equals(helper(t));
     }
 
     public static String helper(String s) {
-        for (int i = 0; i < s.length(); i++) {
-            
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        int len = s.length() - 1;
+        while (len >= 0) {
+            if (s.charAt(len) == '#') {
+                count++;
+                len--;
+            } else if (count > 0) {
+                len--;
+                count--;
+            } else {
+                sb.append(s.charAt(len));
+                len--;
+            }
         }
-        return "";
-
+        return sb.reverse().toString();
     }
 
     public boolean backspaceCompare4(String s, String t) {

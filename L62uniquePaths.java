@@ -6,12 +6,25 @@ package leetCode;
  */
 public class L62uniquePaths {
     public static void main(String[] args) {
-
+        System.out.println(uniquePaths(3, 7));
     }
 
     public static int uniquePaths(int m, int n) {
+        long ans = 1;
+        for (int y = 1, x = m; y < n; y++, x++) {
+            ans = ans * x / y;
+        }
+        return (int) ans;
+    }
 
-        return 1;
+    public static int uniquePaths2(int m, int n) {
+
+        long ans = 1;
+        for (int x = n, y = 1; y < m; ++x, ++y) {
+            ans = ans * x / y;
+        }
+        return (int) ans;
+
     }
 
     public static int uniquePaths1(int m, int n) {

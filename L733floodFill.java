@@ -8,17 +8,41 @@ import java.util.Arrays;
  */
 public class L733floodFill {
     public static void main(String[] args) {
-//        int[][] image = new int[][]{{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
-        int[][] image = new int[][]{{0, 0, 0}, {0, 1, 1}};
-        for (int[] ints : image) {
-            System.out.println(Arrays.toString(ints));
-        }
-        System.out.println("====================");
-        image = floodFill(image, 1, 1, 1);
-        for (int[] ints : image) {
-            System.out.println(Arrays.toString(ints));
-        }
+        // int[][] image = new int[][]{{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
+        // int[][] image = new int[][] { { 0, 0, 0 }, { 0, 1, 1 } };
+        // for (int[] ints : image) {
+        // System.out.println(Arrays.toString(ints));
+        // }
+        // System.out.println("====================");
+        // image = floodFill(image, 1, 1, 1);
+        // for (int[] ints : image) {
+        // System.out.println(Arrays.toString(ints));
+        // }
 
+    }
+
+    public static int[][] floodFill4(int[][] image, int sr, int sc, int newColor) {
+        for (int i = 0; i < image.length; i++) {
+            
+        }
+        int[][] seen = new int[image.length][image[0].length];
+        int origin = image[sr][sc];
+        helper(image, seen, sr, sc, newColor, origin);
+        return image;
+    }
+
+    public static void helper(int[][] image, int[][] seen, int sr, int sc, int newColor, int origin) {
+        if (sr < 0 || sc < 0 || sr >= image.length || sc >= image[0].length || seen[sr][sc] == 1) {
+            if (image[sr][sc] == origin) {
+                image[sr][sc] = newColor;
+            }
+            seen[sr][sc] = 1;
+            return;
+        }
+        helper(image, seen, sr + 1, sc, newColor, origin);
+        helper(image, seen, sr - 1, sc, newColor, origin);
+        helper(image, seen, sr, sc + 1, newColor, origin);
+        helper(image, seen, sr, sc - 1, newColor, origin);
     }
 
     public static int[][] floodFill2(int[][] image, int sr, int sc, int newColor) {
@@ -41,7 +65,6 @@ public class L733floodFill {
             subFloodFill2(image, sr, sc + 1, newColor, origin);
         }
     }
-
 
     public static int[][] floodFill3(int[][] image, int sr, int sc, int newColor) {
         int[][] seen = new int[image.length][image[0].length];
@@ -66,8 +89,6 @@ public class L733floodFill {
         }
     }
 
-
-
     public static int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
         int origin = image[sr][sc];
         int[][] change = new int[image.length][image[0].length];
@@ -90,6 +111,5 @@ public class L733floodFill {
             subFloodFill(image, sr, sc + 1, newColor, origin, change);
         }
     }
-
 
 }
